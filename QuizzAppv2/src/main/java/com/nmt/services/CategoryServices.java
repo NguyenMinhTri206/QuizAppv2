@@ -25,7 +25,7 @@ public class CategoryServices {
 
         //b3 thuc thi truy van
         String sql = "SELECT * FROM Category";
-        PreparedStatement stm = conn.prepareStatement(sql);
+        PreparedStatement stm = conn.prepareCall(sql);
         ResultSet rs = stm.executeQuery(sql);
         
         List<Category> cates = new ArrayList<>();

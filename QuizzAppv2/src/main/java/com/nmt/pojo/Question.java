@@ -20,16 +20,17 @@ public class Question {
     private Category category;
     private Level level;
     private List<Choice> choices;
-    
-    private Question(Builder b){
+
+    private Question(Builder b) {
         this.id = b.id;
-        this.content=b.content;
-        this.hint=b.hint;
-        this.image=b.image;
-        this.category=b.category;
-        this.level=b.level;
+        this.content = b.content;
+        this.hint = b.hint;
+        this.image = b.image;
+        this.category = b.category;
+        this.level = b.level;
         this.choices = new ArrayList<>();
     }
+
     public static class Builder {
 
         private int id;
@@ -39,30 +40,39 @@ public class Question {
         private Category category;
         private Level level;
         private List<Choice> choices;
-        
+
         public Builder setId(int id) {
             this.id = id;
             return this;
         }
-        
-        public Builder setContent(String content){
+
+        public Builder setContent(String content) {
             this.content = content;
             return this;
         }
-        
-       public Builder setHint(String hint){
+
+        public Builder setHint(String hint) {
             this.hint = hint;
             return this;
         }
-        
-       public Builder setImage(String image){
+
+        public Builder setImage(String image) {
             this.image = image;
             return this;
         }
-       
-       public Question build(){
-           return new Question(this);
-       }
+        
+        public Builder setLevel(Level lvl){
+            this.level = lvl;
+            return this;
+        }
+        
+        public Builder setCategory(Category c){
+            this.category = c;
+            return this;
+        }
+        public Question build() {
+            return new Question(this);
+        }
     }
 
     /**

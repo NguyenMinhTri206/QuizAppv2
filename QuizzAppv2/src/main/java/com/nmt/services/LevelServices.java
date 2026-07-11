@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.nmt.services.questions;
+package com.nmt.services;
 
 import com.nmt.pojo.Category;
-import com.nmt.pojo.Question;
+import com.nmt.pojo.Level;
 import com.nmt.utils.MyConnectionSingleton;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,22 +18,22 @@ import java.util.List;
  *
  * @author Administrator
  */
-public class QuestionServices {
-    public List<Question> getQuestion() throws SQLException{
+public class LevelServices {
+    public List<Level> getLevels() throws SQLException {
         Connection conn = MyConnectionSingleton.getInstance().connect();
 
         //b3 thuc thi truy van
-        String sql = "SELECT * FROM question";
+        String sql = "SELECT * FROM level";
         PreparedStatement stm = conn.prepareCall(sql);
         ResultSet rs = stm.executeQuery(sql);
         
-        List<Question> questions = new ArrayList<>();
+        List<Level> levels = new ArrayList<>();
         while (rs.next()) {
             int id = rs.getInt("id");
-            String content = rs.getString("content");
+            String name = rs.getString("name");
             
-            questions.add(new Question.Builder().setContent(content).setId(id).build());
+            levels.add(new Level(id,name));
         }
-        return questions;
+        return levels;
     }
 }
